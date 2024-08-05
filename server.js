@@ -8,11 +8,17 @@ server.listen(3000);
 //     console.log('teste')
 // })
 
-server.user((req,res,next)=>{
-    console.log('teste1');
-    next();
-})
+// server.user((req,res,next)=>{
+//     console.log('teste1');
+//     next();
+// })
 
 server.use((req,res,next)=>{
     req.requestTime=Date.now();
+    next()
+})
+
+server.get('/',(req,res)=>{
+    console.log(req.requestTime);
+    res.send('<h1>Teste de conexão</h1>')
 })
