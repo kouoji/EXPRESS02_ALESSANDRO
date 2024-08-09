@@ -1,27 +1,29 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-app.listen(3000,()=>{
-    console.log('Servidor em execução')
+app.listen(3000, () => {
+  console.log('Servidor em execução');
 });
 
-//rotas com paramêtros
+// Rotas com parâmetros
 
-app.get('/',(req,res)=>{
-    res.send('Olá, mundo!')
-})
+app.get('/', (req, res) => {
+  res.send('Olá, mundo!');
+});
 
-//Rota com um parâmetro
-app.get('/ola/:nome',(req,res)=>{
-    console.log(req,params.nome)
-    res.send('Olá'+req.params.nome)
-} )
-//rota com dois parametrios
-app.get('/ola:nome/:empresa',(req,res)=>{
-    res.send('Ola' + req.params.nome+"da empresa"+req.params.empresa)
-})
+// Rota com um parâmetro
+app.get('/ola/:nome', (req, res) => {
+  console.log(req.params.nome);
+  res.send(`Olá ${req.params.nome}`);
+});
 
-//rota com soma de dois parametros
-app.get('/soma/:a/:b',(req,res)=>{
-    res.send('O resultado da soma de: '+req.params.a + 'é:'+ req.params.b + 'e' + (parseInt(req,params.b)))
-})
+// Rota com dois parâmetros
+app.get('/ola/:nome/:empresa', (req, res) => {
+  res.send(`Olá ${req.params.nome} da empresa ${req.params.empresa}`);
+});
+
+// Rota com soma de dois parâmetros
+app.get('/soma/:a/:b', (req, res) => {
+  const resultado = parseInt(req.params.a) + parseInt(req.params.b);
+  res.send(`O resultado da soma de ${req.params.a} e ${req.params.b} é ${resultado}`);
+});
